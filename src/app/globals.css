@@ -13,7 +13,7 @@
 @import "../styles/dark-theme.css";
 
 
-@custom-variant dark (&:is(.dark *));
+/* @custom-variant dark (&:is(.dark *)); */
 
 @theme inline {
   --color-background: var(--background);
@@ -191,6 +191,9 @@
 
 
  @layer utilities {
+  .text-ceramic-white {
+    color: #f5f7fa;
+  }
   .text-28-semibold {
     @apply text-[28px] font-semibold;
   }
@@ -460,29 +463,3 @@
 .lb-elevation {
   background: #0f1c34;
 }
-
-
-
-/* 
-
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 240 10% 3.9%;
-    --border: 240 5.9% 90%;
-  }
-
-  .dark {
-    --background: 240 10% 3.9%;
-    --foreground: 0 0% 98%;
-    --border: 240 3.7% 15.9%;
-  }
-
-  * {
-    @apply border-border;
-  }
-
-  body {
-    @apply bg-background text-foreground;
-  }
-} */
