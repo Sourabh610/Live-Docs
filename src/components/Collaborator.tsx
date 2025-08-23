@@ -1,8 +1,21 @@
 import Image from "next/image";
 import { useState } from "react";
-import UserTypeSelector from "./UserTypeSelector";
+
+import {
+  removeCollaborator,
+  updateDocumentAccess,
+} from "@/lib/actions/room.actions";
+
 import { Button } from "./ui/button";
-import { removeCollaborator, updateDocumentAccess } from "@/lib/actions/room.actions";
+import UserTypeSelector from "./UserTypeSelector";
+
+// import Image from "next/image";
+// import { useState } from "react";
+
+// import { removeCollaborator, updateDocumentAccess } from "@/lib/actions/room.actions";
+
+// import { Button } from "./ui/button";
+// import UserTypeSelector from "./UserTypeSelector";
 const Collaborator = ({
   roomId,
   creatorId,

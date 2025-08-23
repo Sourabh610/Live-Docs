@@ -230,7 +230,7 @@
   }
 
   .floating-toolbar {
-    @apply flex w-full min-w-max items-center justify-center gap-2 rounded-lg bg-dark-350 p-1.5 shadow-xl;
+    @apply text-ceramic-white w-full min-w-max items-center justify-center gap-2 rounded-lg bg-dark-350 p-1.5 shadow-xl;
   }
 
   .floating-toolbar-btn {

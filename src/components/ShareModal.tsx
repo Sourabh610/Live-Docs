@@ -1,7 +1,14 @@
 "use client";
 
+// 🚀 External packages
 import { useSelf } from "@liveblocks/react/suspense";
+import Image from "next/image";
 import { useState } from "react";
+
+// 🧩 Third-party libraries
+
+// 🛠 Aliased project imports
+import { updateDocumentAccess } from "@/lib/actions/room.actions";
 
 import {
   Dialog,
@@ -11,14 +18,13 @@ import {
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog";
-import { Button } from "./ui/button";
-import Image from "next/image";
+import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
 
-import { Input } from "@/components/ui/input";
-import UserTypeSelector from "./UserTypeSelector";
+// 📁 Relative imports
 import Collaborator from "./Collaborator";
-import { updateDocumentAccess } from "@/lib/actions/room.actions";
+import { Button } from "./ui/button";
+import UserTypeSelector from "./UserTypeSelector";
 
 const ShareModal = ({
   roomId,

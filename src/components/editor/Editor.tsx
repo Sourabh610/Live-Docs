@@ -1,24 +1,33 @@
 "use client";
 
-import Theme from "./plugins/Theme";
-import ToolbarPlugin from "./plugins/ToolbarPlugin";
-import { HeadingNode } from "@lexical/rich-text";
+// ✅ External packages
+
+// ✅ Third-party packages (Lexical + Liveblocks)
 import { AutoFocusPlugin } from "@lexical/react/LexicalAutoFocusPlugin";
 import { LexicalComposer } from "@lexical/react/LexicalComposer";
-import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
 import { ContentEditable } from "@lexical/react/LexicalContentEditable";
-import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
 import { LexicalErrorBoundary } from "@lexical/react/LexicalErrorBoundary";
+import { HistoryPlugin } from "@lexical/react/LexicalHistoryPlugin";
+import { RichTextPlugin } from "@lexical/react/LexicalRichTextPlugin";
+import { HeadingNode } from "@lexical/rich-text";
+import { useThreads } from "@liveblocks/react/suspense";
+import {
+  FloatingComposer,
+  FloatingThreads,
+  liveblocksConfig,
+  LiveblocksPlugin,
+  useEditorStatus,
+} from "@liveblocks/react-lexical";
 import React from "react";
 
-import { FloatingComposer, FloatingThreads, liveblocksConfig, LiveblocksPlugin, useEditorStatus } from "@liveblocks/react-lexical";
-import Loader from "../Loader";
-
-import FloatingToolbarPlugin from './plugins/FloatingToolbarPlugin'
-import { useThreads } from "@liveblocks/react/suspense";
+// ✅ Internal/relative imports
 import Comments from "../Comments";
 import { DeleteModal } from "../DeleteModal";
+import Loader from "../Loader";
 
+import FloatingToolbarPlugin from "./plugins/FloatingToolbarPlugin";
+import Theme from "./plugins/Theme";
+import ToolbarPlugin from "./plugins/ToolbarPlugin";
 
 // Catch any errors that occur during Lexical updates and log them
 // or throw them as needed. If you don't throw them, Lexical will
@@ -37,8 +46,7 @@ export function Editor({
 }) {
   const status = useEditorStatus();
 
-
-  const {threads}=useThreads();
+  const { threads } = useThreads();
 
   const initialConfig = liveblocksConfig({
     namespace: "Editor",
@@ -54,16 +62,16 @@ export function Editor({
   return (
     <LexicalComposer initialConfig={initialConfig}>
       <div className="editor-container size-full">
-        <div className="z-50 custom-scrollbar w-screen overflow-auto border-y border-dark-300 bg-dark-100 pl-3 pr-4 shadow-sm flex min-w-full justify-between">
+        <div className="custom-scrollbar z-50 flex w-screen min-w-full justify-between overflow-auto border-y border-dark-300 bg-dark-100 pl-3 pr-4 shadow-sm">
           <ToolbarPlugin />
-          {currentUserType === 'editor' && <DeleteModal roomId={roomId}/>}
+          {currentUserType === "editor" && <DeleteModal roomId={roomId} />}
         </div>
 
         <div className="editor-wrapper flex flex-col items-center justify-start">
           {status === "not-loaded" || status === "loading" ? (
             <Loader />
           ) : (
-            <div className="editor-inner min-h-[1100px] relative mb-5 h-fit w-full max-w-[800px] shadow-md lg:mb-10">
+            <div className="editor-inner relative mb-5 h-fit min-h-[1100px] w-full max-w-[800px] shadow-md lg:mb-10">
               <RichTextPlugin
                 contentEditable={
                   <ContentEditable className="editor-input h-full" />
@@ -84,11 +92,9 @@ export function Editor({
 
             {/* This Creates a comment section when something is selected in editor */}
 
-
             <FloatingThreads threads={threads} />
 
             {/* This will add a thread of comment on the word and shows us the thread */}
-
 
             <Comments />
           </LiveblocksPlugin>

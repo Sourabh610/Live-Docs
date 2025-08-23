@@ -5,8 +5,15 @@
  * LICENSE file in the root directory of this source tree.
  *
  */
-import { useLexicalComposerContext } from '@lexical/react/LexicalComposerContext';
-import { mergeRegister } from '@lexical/utils';
+
+import { useLexicalComposerContext } from "@lexical/react/LexicalComposerContext";
+import {
+  $createHeadingNode,
+  $createQuoteNode,
+  $isHeadingNode,
+} from "@lexical/rich-text";
+import { $setBlocksType } from "@lexical/selection";
+import { mergeRegister, $findMatchingParent } from "@lexical/utils";
 import {
   $createParagraphNode,
   $isRootOrShadowRoot,
@@ -19,22 +26,14 @@ import {
   REDO_COMMAND,
   SELECTION_CHANGE_COMMAND,
   UNDO_COMMAND,
-} from 'lexical';
-import {
-  $createHeadingNode,
-  $createQuoteNode,
-  $isHeadingNode,
-} from '@lexical/rich-text';
-import { $setBlocksType } from '@lexical/selection';
-import { $findMatchingParent } from '@lexical/utils';
-import React from 'react';
-import {
+} from "lexical";
+import React, {
   useCallback,
   useEffect,
   useRef,
   useState,
   useSyncExternalStore,
-} from 'react';
+} from "react";
 
 const LowPriority = 1;
 

@@ -1,10 +1,18 @@
-
-// import CollaborativeRooms from "@/src/components/CollaborativeRooms";
-import CollaborativeRooms from "@/components/CollaborativeRooms";
-import { getDocument } from "@/lib/actions/room.actions";
-import { getClerkUsers } from "@/lib/actions/user.actions";
 import { currentUser } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
+
+import { getDocument } from "@/lib/actions/room.actions";
+import { getClerkUsers } from "@/lib/actions/user.actions";
+
+import CollaborativeRooms from "@/components/CollaborativeRooms";
+
+// import { currentUser } from "@clerk/nextjs/server";
+// import { redirect } from "next/navigation";
+
+// import { getDocument } from "@/lib/actions/room.actions";
+// import { getClerkUsers } from "@/lib/actions/user.actions";
+
+// import CollaborativeRooms from "@/components/CollaborativeRooms";
 
 const Documents = async ({ params: { id } }: SearchParamProps) => {
   const clerkUser = await currentUser();
@@ -51,39 +59,9 @@ const Documents = async ({ params: { id } }: SearchParamProps) => {
 
 export default Documents;
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 // export const Documents = async ({params:{id}}:SearchParamProps) => {
 //   const clerkUser = await currentUser();
 //   if(!clerkUser) redirect('/sign-in');
-
 
 //   const room = await getDocument({
 //     roomId: id,
@@ -91,7 +69,7 @@ export default Documents;
 //   });
 
 //   if(!room) redirect('/');
-  
+
 //   const userIds = Object.keys(room.usersAccesses);
 //   const users = (await getClerkUsers({ userIds })) || [];
 
@@ -120,8 +98,6 @@ export default Documents;
 //   );
 // };
 // export default Documents;
-
-
 
 // const Document = async ({ params: { id } }: SearchParamProps) => {
 //   const clerkUser = await currentUser();

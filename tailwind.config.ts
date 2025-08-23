@@ -1,6 +1,6 @@
-import type { Config } from 'tailwindcss';
+import type { Config } from "tailwindcss";
 
-const { fontFamily } = require('tailwindcss/defaultTheme');
+const { fontFamily } = require("tailwindcss/defaultTheme");
 
 const config = {
   darkMode: ["class"],
@@ -39,6 +39,17 @@ const config = {
           400: "#27344D",
           500: "#2E3D5B",
         },
+        primary: "hsl(var(--primary))",
+        "primary-foreground": "hsl(var(--primary-foreground))",
+        secondary: "hsl(var(--secondary))",
+        "secondary-foreground": "hsl(var(--secondary-foreground))",
+        destructive: "hsl(var(--destructive))",
+        "destructive-foreground": "hsl(var(--destructive-foreground))",
+        accent: "hsl(var(--accent))",
+        "accent-foreground": "hsl(var(--accent-foreground))",
+        input: "hsl(var(--input))",
+        ring: "hsl(var(--ring))",
+
         border: "hsl(var(--border))",
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -46,6 +57,10 @@ const config = {
       fontFamily: {
         sans: ["var(--font-sans)", ...fontFamily.sans],
       },
+      boxShadow: {
+        xs: "0 1px 2px 0 rgba(0, 0, 0, 0.05)",
+      },
+
       keyframes: {
         "accordion-down": {
           from: { height: "0" },
@@ -66,6 +81,14 @@ const config = {
       },
     },
   },
+  safelist: [
+    "description",
+    "success",
+    "connectivity-error",
+    "success_placeholder",
+    "flex-spacer",
+    "text-ceramic-white",
+  ],
   plugins: [require("tailwindcss-animate")],
 } satisfies Config;
 
